@@ -1,0 +1,73 @@
+<div class="Calendar">
+  <div class="Date">
+    <img src="assets/img/prev.png" (click)="prevMonth()">
+    <p>{{Title.date}} {{Title.month}} {{Title.day}} {{yearIndicator}} </p>
+    <img src="assets/img/next.png" (click)="nextMonth()">
+  </div>
+
+  <div class="Weeks">
+    <div class="Days Title" *ngFor="let day of days">
+      <p>{{day}}</p>
+    </div>
+  </div>
+
+  <!-- Calendar's days -->
+  <section *ngIf="!showDayList">
+    <div class="Weeks" *ngFor="let week of weeks; index as i">
+      <div class="Days" *ngFor="let day of weeks[0]; index as j"
+        [ngClass]="{'Today': (i == Today.row && j == Today.col) && Current.ShowToday}"
+        [routerLink]="['Allproduct']"        >
+                                <!-- (click)="showDayList = !showDayList" -->
+        <p>{{week[j]}}</p>
+
+        <div class="TaskQuant" *ngIf="taskQuant[i*7+j] > 0"> {{taskQuant[i*7+j]}} </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- See tasks for the selected day -->
+  <section *ngIf="showDayList">
+    <div class="Filter">
+      <button [routerLink]="['../Calendar']"
+              (click)="showDayList = !showDayList">
+        <p>Back</p>
+      </button>
+
+      <div class="Search-task">
+        <input type="text" name="" placeholder="Search.." (keyup)="search()">
+        <img src="assets/img/search.png" alt="icon">
+      </div>
+
+      <div class="Tools">
+        <div class="Tool Sorting" (click)="sorting = !sorting">
+          <img src="assets/img/dropdown.png" alt="icon" [class]="sortingDrop">
+        </div>
+
+        <div class="Sorting-list" *ngIf="sorting">
+          <div class="Sorter Activated-sorter" [routerLink]="['Allproduct']">
+            <p>All</p>
+          </div>
+
+          <div class="Categories" *ngFor="let categ of category">
+            <div class="Sorter" [routerLink]="['Filter',categ]">
+              <p>{{categ}}</p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="Tool Activated"> <p (click)="CheckAll()">Check <br> All</p> </div>
+        <div class="Tool"> <p (click)="Done()">Done</p> </div>
+        <div class="Tool"> <p (click)="Undone()">Undone</p> </div>
+
+        <div class="Tool Clear"> <p (click)="Clear()">Clear</p> </div>
+      </div>
+    </div>
+
+    <div class="Tasks">
+      <router-outlet></router-outlet>
+    </div>
+
+  </section>
+</div>

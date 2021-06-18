@@ -1,0 +1,22 @@
+$black: #383838
+$blue: #4FE4DB
+$red: #E44F4F
+$gray: #606060
+$lightGray: #F2F2F2
+$middleGray: #9D9D9D
+$highGray: #DBDBDB
+$purple: #884FE4
+
+@mixin horizontalBox()
+  display: flex
+  align-items: center
+  justify-content: space-around
+
+@mixin verticalBox()
+  display: flex
+  align-items: center
+  justify-content: space-around
+  flex-direction: column
+
+@mixin shadowHover()
+  -webkit-box-shadow: 0px 0px 12px 0px rgba(0,0,0,0.75)

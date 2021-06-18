@@ -1,0 +1,41 @@
+@import "~src/assets/sass/variables"
+
+.Nav-menu
+  @include verticalBox()
+  user-select: none
+  width: 20%
+  height: 100vh
+  background: $purple
+  position: fixed
+  top: 0
+  left: 0
+  color: white
+  float: left
+  -webkit-box-shadow: 6px 0px 14px -7px rgba(0,0,0,0.75)
+
+  .Links
+    @include verticalBox()
+    height: 50%
+    letter-spacing: 2px
+    font-size: 1.5vw
+    word-spacing: 3px
+    p
+      cursor: pointer
+
+  .Sub-title
+    width: 50%
+    height: auto
+
+  img
+    width: 50%
+    height: auto
+
+
+.Content
+  user-select: none
+  width: 66%
+  height: 24vh
+  float: right
+  padding: 2% 7%
+
+// AMIS DABLA MOCEMULI KODI UNDA GADAVIDES CHILD COMPONENTIS STYLESHI SASS DABOLOEBA EQNEBA

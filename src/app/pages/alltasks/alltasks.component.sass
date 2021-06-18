@@ -1,0 +1,65 @@
+@import "~src/assets/sass/variables"
+
+.Task
+  @include horizontalBox()
+
+  margin-top: 3%
+  padding: 0 1%
+  width: 98%
+  height: 8vh
+  border-radius: 10px
+  background: $lightGray
+  transition: all 1s
+  justify-content: space-around
+
+  &:hover
+    -webkit-box-shadow: 0px 0px 12px 0px rgba(0,0,0,0.75)
+    transition: all 1s
+  .Checked
+    text-decoration: line-through
+    color: $gray
+
+  .Checkbox
+    @include horizontalBox()
+
+    width: 3%
+    height: 4vh
+    cursor: pointer
+    background: $purple
+    justify-content: center
+
+    img
+      width: 100%
+      height: 100%
+
+  .Time
+    @include verticalBox
+
+    width: 10%
+    height: 5vh
+    color: white
+    border-radius: 55px
+    background: $purple
+    justify-content: center
+
+  input
+    width: 18.5%
+    display: block
+    height: 60%
+    padding-left: 3%
+    border-radius: 10px
+    background: white
+    transition: all 1s
+
+    &::placeholder
+      color: $middleGray
+      font-family: "italic"
+      letter-spacing: 1px
+
+  p
+    cursor: pointer
+    width: 25%
+    white-space: nowrap
+    overflow: hidden
+  img
+    cursor: pointer

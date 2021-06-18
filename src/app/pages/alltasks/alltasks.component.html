@@ -1,0 +1,15 @@
+<div class="Task" *ngFor="let value of tasks">
+  <div class="Checkbox" (click)="value.done = !value.done">
+    <img src="assets/img/checked.png" *ngIf="value.done">
+  </div>
+
+  <p [ngClass]="{'Checked' : value.done}"  *ngIf="!editMode">{{value.task_title}}</p>
+
+  <input type="text" name="" [placeholder]="task.title" *ngIf="editMode">
+
+  <div class="Time"> {{value.from_time}} </div>
+  <div class="Time"> {{value.to_time}} </div>
+
+  <img src="assets/img/pencil.png" alt="pencil" (click)="editMode = !editMode">
+  <img src="assets/img/remove.png" alt="remove" (click)="remove(value.id_task)">
+</div>

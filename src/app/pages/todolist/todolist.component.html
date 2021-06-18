@@ -1,0 +1,47 @@
+<form class="Search-task" #Search="ngForm" (ngSubmit)="search(Search.value)">
+  <input type="text" name="keyword" placeholder="Search.." ngModel>
+  <input type="image" class="Button" src="assets/img/search.png">
+</form>
+
+
+<div class="New">
+  <div class="Button" (click)="createNew =! createNew"> New</div>
+
+  <input type="text" name="" placeholder=" Create a new task.."*ngIf="createNew">
+
+  <div class="Today" *ngIf="!createNew">
+    <input type="date" name="" value="" >
+  </div>
+
+  <div class="Calendar"> <img src="assets/img/calendar.png"> </div>
+</div>
+
+<div class="Tools">
+  <div class="Tool Sorting" (click)="sorting = !sorting">
+    <p>Category</p>
+    <img src="assets/img/dropdown.png" alt="icon" [class]="sortingDrop">
+  </div>
+
+  <div class="Sorting-list" *ngIf="sorting">
+    <div class="Sorter Activated-sorter" [routerLink]="['Allproduct']">
+      <p>All</p>
+    </div>
+
+    <div class="Categories" *ngFor="let categ of category">
+      <div class="Sorter" [routerLink]="['Filter',categ]">
+        <p>{{categ}}</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="Tool Activated"> <p (click)="CheckAll()">Check All</p> </div>
+  <div class="Tool"> <p (click)="Done()">Done</p> </div>
+  <div class="Tool"> <p (click)="Undone()">Undone</p> </div>
+
+  <div class="Tool Clear"> <p (click)="Clear()">Clear</p> </div>
+</div>
+
+<div class="All-tasks">
+  <router-outlet></router-outlet>
+</div>
